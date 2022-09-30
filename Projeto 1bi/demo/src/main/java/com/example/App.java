@@ -3,10 +3,7 @@ package com.example;
 import java.util.Scanner;
 import java.util.Calendar;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args )
@@ -21,20 +18,27 @@ public class App
 
         while (escolhaMenu != 0) {
 
-            System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+            System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
             System.out.println("=-=-=-=-MENU=-=-=-=-=");
             System.out.println("=-=-=-=-=-=-=-=-=-=-=");
-            System.out.print("0 - Parar menu\n1 - Cadastro de doador\n2 - Coletar sangue/Registrar coleta\n3 - Ver validade\n4 - Liberação e descarte\n5 - Visualizar Estoque\n6 - Transfusão\n7 - Relatório de bolsas e estatísticas\n8 - Registro de solicitações\n9 - Registro de prova de compatibilidade\n10 - Realizar devolução\nEscolha:");
+            System.out.print("0 - Parar menu\n1 - Cadastro de doador\n2 - Coletar sangue/Registrar coleta\n3 - Ver validade\n4 - Liberação e descarte\n5 - Visualizar Estoque\n6 - Transfusão\n7 - Registro de prova de compatibilidade\n8 - Realizar devolução\nEscolha:");
         
             escolhaMenu = reader.nextInt();
 
             switch (escolhaMenu) {
                 case 0:
 
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-PARANDO-=-=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
                     System.out.println("Parando operação...");
 
                 break;
                 case 1:
+
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-CADASTRO=-=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
 
                     System.out.print("Nome do doador: ");
                     String nomeDoador = reader.nextLine();
@@ -62,6 +66,9 @@ public class App
 
                 case 2:
 
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-=COLETAR=-=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
                 
                     System.out.print("CPF do doador: ");
                     String cpfColeta = reader.nextLine();
@@ -81,6 +88,10 @@ public class App
 
                 case 3:
 
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-VER VALIDADE=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+
                     System.out.print("CPF do doador: ");
                     String cpfValidade = reader.nextLine();
 
@@ -91,6 +102,10 @@ public class App
                 break;
 
                 case 4:
+
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=LIBERAÇÃO E DESCARTE=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
 
                     System.out.print("CPF do gerente/administrador: ");
                     String cpfLiberacao = reader.nextLine();
@@ -114,6 +129,10 @@ public class App
 
                 case 5:
 
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=VER ESTOQUE=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+
                     Estoque estoque = new Estoque();
 
                     estoque.retornarEstoque();
@@ -121,6 +140,10 @@ public class App
                 break;
 
                 case 6:
+
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-TRANSFUSÃO=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
 
                     System.out.print("CPF do recebedor: ");
                     String cpfRecebedor = reader.nextLine();
@@ -131,10 +154,45 @@ public class App
 
                     // trans.transfusar();
 
+                break;
+
+                case 7:
+
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=COMPATIBILIDADE=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+
+                    System.out.print("Código do saco de sangue: ");
+                    String codigoCompatibilidade = reader.nextLine();
+
+                    System.out.print("CPF do recebedor: ");
+                    String cpfCompatibilidade = reader.nextLine();
+
+                    Compatibilidade comp = new Compatibilidade(codigoCompatibilidade, cpfCompatibilidade);
+
+                    comp.verCompatibilidade();
+
+                break;
+
+                case 8:
+
+                    System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                    System.out.println("=-=-=-DEVOLUÇÃO-=-=-=");
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+
+                    System.out.print("Código da bolsa de sangue: ");
+                    String codigoDevolucao = reader.nextLine();
+
+                    System.out.print("CPF do doador: ");
+                    String cpfDevolucao = reader.nextLine();
+
+                    Devolucao devolve = new Devolucao(cpfDevolucao, codigoDevolucao);
+
+                    devolve.devolver();
 
                 break;
             }
-            
         }
+        
     }
 }
