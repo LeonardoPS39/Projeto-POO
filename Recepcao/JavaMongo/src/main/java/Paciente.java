@@ -1,4 +1,14 @@
 // Atributos de Pessoa, Acompanhante, Plano(Booleano), Urgente(Booleano)
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+import com.mongodb.MongoClientURI;
+import com.mongodb.ServerAddress;
+
+
 public class Paciente{
 
     private boolean urgente;
@@ -53,6 +63,21 @@ public class Paciente{
         String saida = "";
         saida += pessoa.imprimir() + "\n" + acompanhante.imprimir() + "\nÉ urgente? " + this.getUrgente() + "\nTem plano? " + this.getPlano() + "\n" + medico.imprimir();
         return saida;
+    }
+    
+    public void setarDB() {
+    	
+    	MongoClient conexao = new MongoClient();
+    	MongoDatabase dataBase = conexao.getDatabase("Hp");
+    	MongoCollection<Document> collection = dataBase.getCollection("Pacientes");
+    	
+    	Document d = new Document();
+    	d.append("Pessoa", this.getPessoa())
+    	.append("Acompanhante", this.getAcompanhante())
+    	.append("Medico", this.getMedico());
+    	
+    	collection.insertOne(d);
+    	
     }
     
 }
